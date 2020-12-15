@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Управление контроллером</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+
+    <script defer src="js/main.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="header-block" id="vector-block"></div>
+        <div class="header-block" id="central-block"></div>
+        <div class="header-block" id="cpi-block"></div>
+    </header>
+    <main>
+        <div id="board-block">
+            <div class="board-child">
+                <div class="lamp red-lamp" id="board-lamp">
+                </div>
+            </div>
+            <div class="board-child" id="board-text"></div>
+            <div class="board-child">
+                <div class="params-btn" id="board-params">
+                    <button onclick="changeLamp(this)" class="params-btn" slot-id="board-block"><img
+                            src="img/settings.png" /></button>
+                </div>
+            </div>
+        </div>
+        <div id="main-slots-block">
+
+        </div>
+    </main>
+
+</body>
+
+</html>
