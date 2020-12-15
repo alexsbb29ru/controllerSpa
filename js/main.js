@@ -1,7 +1,13 @@
+/**
+ * Инициализация всех данных
+ */
 function init() {
     setTextData()
+    generateSlots(9)
 }
-
+/**
+ * Инициализация текстовых данных в блоках
+ */
 function setTextData() {
     //Устанавливаем текстовые значения в блоки
     let vectorBlock = document.getElementById("vector-block")
@@ -13,12 +19,13 @@ function setTextData() {
     centralBlock.innerText = "Название блока"
     cpiBlock.innerText = "ЦПИ"
     boardText.innerText = "Кросс-плата"
-
-    generateSlots()
 }
 
-function generateSlots() {
-    let slotCount = 9
+/**
+ * Генерация слотов в зависимости от указанного количества
+ */
+function generateSlots(slotCount) {
+    //Получаем корневой элемент, куда будем добавлять слоты
     let mainSlotBlock = document.getElementById("main-slots-block")
 
     for (let i = 0; i < slotCount; i++) {
@@ -37,7 +44,10 @@ function generateSlots() {
         mainSlotBlock.innerHTML += slotDiv
     }
 }
-
+/**
+ * Изменение цвета лампочки
+ * @param {Element} btn Кнопка, на которую нажали
+ */
 function changeLamp(btn) {
     let slotId = btn.attributes["slot-id"].value
     let slot = document.getElementById(`slot${slotId}`)
