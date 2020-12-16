@@ -1,9 +1,22 @@
+let slotColorTable
+let slotCommandsColorTable
+let crossBoardId
 /**
  * Инициализация всех данных
  */
 function init() {
     setTextData()
-    generateSlots(9)
+    slotCommandsColorTable = {
+        disabled: "disabled-block",
+        active: "active-block",
+        error: "error-block"
+    }
+    slotColorTable = {
+        0: slotCommandsColorTable.disabled,
+        1: slotCommandsColorTable.active,
+        2: slotCommandsColorTable.error
+    }
+    crossBoardId = "board-block"
 }
 /**
  * Инициализация текстовых данных в блоках
@@ -20,50 +33,48 @@ function setTextData() {
     cpiBlock.innerText = "ЦПИ"
     boardText.innerText = "Кросс-плата"
 }
-
-/**
- * Генерация слотов в зависимости от указанного количества
- */
-function generateSlots(slotCount) {
-    //Получаем корневой элемент, куда будем добавлять слоты
-    let mainSlotBlock = document.getElementById("main-slots-block")
-
-    for (let i = 0; i < slotCount; i++) {
-        let slotName = i == 0 ? "Main" : "Slave"
-
-        let slotDiv =
-            `<div class="slot-block" id="slot${i + 1}">
-                <div class="slot-numb">Слот ${i + 1}</div>
-                <div class="lamp red-lamp"></div>
-                <div class="slot-name">${slotName}</div>
-                <div class="slot-params">
-                    <button onclick="changeLamp(this)" class="params-btn" slot-id="${i + 1}"><img src="img/settings.png" /></button>
-                </div>
-            </div>`
-
-        mainSlotBlock.innerHTML += slotDiv
-    }
-}
 /**
  * Изменение цвета лампочки
- * @param {Element} btn Кнопка, на которую нажали
+ * @param {Element} slot Слот, на который нажали
  */
-function changeLamp(btn) {
-    let slotId = btn.attributes["slot-id"].value
-    let slot = document.getElementById(`slot${slotId}`)
+function changeSlotColor(slot) {
+    //Выведем всплывашку с вопросом о значении
+    let command = prompt("Введите 0 - отключен, 1 - активен или 2 - ошибка", 0)
+    //Если не целое число, остановим код
+    if (!parseInt(command))
+        if (command != 0)
+            return false
 
-    if (!parseInt(slotId))
-        slot = document.getElementById(slotId)
+    //Если команды нет в таблице, остановим выполнение
+    if (!slotColorTable[command])
+        return
 
-    let slotLamp = slot.querySelector(".lamp")
+    //Получаем CSS-класс по коду, который ввели
+    let bgCssClass = slotColorTable[command]
 
-    if (slotLamp.classList.contains("red-lamp")) {
-        slotLamp.classList.remove("red-lamp")
-        slotLamp.classList.add("green-lamp")
+    //Удаляем все CSS-классы из таблицы, чтобы не привязываться к куче условий
+    removeSlotClasses(slot)
+    //Добавляем полученный по команде CSS-класс
+    slot.classList.add(bgCssClass)
+
+    if (slot.id === crossBoardId && bgCssClass !== slotCommandsColorTable.active) {
+        disableSlots()
     }
-    else {
-        slotLamp.classList.remove("green-lamp")
-        slotLamp.classList.add("red-lamp")
+}
+
+function disableSlots() {
+    let slots = document.querySelectorAll(".block-child")
+
+    slots.forEach((slot) => {
+        removeSlotClasses(slot)
+        slot.classList.add(slotCommandsColorTable.disabled)
+    })
+}
+
+function removeSlotClasses(slot) {
+    for (let i in slotColorTable) {
+        if (slot.classList.contains(slotColorTable[i]))
+            slot.classList.remove(slotColorTable[i])
     }
 }
 

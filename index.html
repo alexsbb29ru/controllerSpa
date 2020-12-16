@@ -18,20 +18,97 @@
         <div class="header-block" id="cpi-block"></div>
     </header>
     <main>
-        <div id="board-block">
-            <div class="board-child">
-                <div class="lamp red-lamp" id="board-lamp">
-                </div>
-            </div>
+        <div class="disabled-block" id="board-block" onclick="changeSlotColor(this)">
             <div class="board-child" id="board-text"></div>
             <div class="board-child">
                 <div class="params-btn" id="board-params">
-                    <button onclick="changeLamp(this)" class="params-btn" slot-id="board-block"><img
-                            src="img/settings.png" /></button>
+                    <button class="params-btn" slot-id="board-block"><img src="img/settings.png" /></button>
                 </div>
             </div>
         </div>
         <div id="main-slots-block">
+            <!--FAN_1-->
+            <div class="slot-block one-slot disabled-block block-child" id="fan1" onclick="changeSlotColor(this)">
+                <div class="slot-params">
+                    <button class="params-btn" slot-id="fan1"><img src="img/settings.png" /></button>
+                </div>
+                <div class="slot-name">FAN_1</div>
+            </div>
+            <!--Слот 1 и Слот 2-->
+            <div class="slot-block double-slot">
+                <!--Слот 2-->
+                <div class="slot-block double-slot disabled-block block-child" id="slot2"
+                    onclick="changeSlotColor(this)">
+                    <div class="slot-params">
+                        <button class="params-btn" slot-id="slot2"><img src="img/settings.png" /></button>
+                    </div>
+                    <div class="slot-name-h">Слот 2</div>
+                </div>
+                <!--Слот 1-->
+                <div class="slot-block double-slot disabled-block block-child" id="slot1"
+                    onclick="changeSlotColor(this)">
+                    <div class="slot-params">
+                        <button class="params-btn" slot-id="slot1"><img src="img/settings.png" /></button>
+                    </div>
+                    <div class="slot-name-h">Слот 1</div>
+                </div>
+            </div>
+
+            <!--Слот 3 и Слот 4-->
+            <div class="slot-block double-slot">
+                <!--Слот 4-->
+                <div class="slot-block double-slot disabled-block block-child" id="slot4"
+                    onclick="changeSlotColor(this)">
+                    <div class="slot-params">
+                        <button class="params-btn" slot-id="slot4"><img src="img/settings.png" /></button>
+                    </div>
+                    <div class="slot-name-h">Слот 4</div>
+                </div>
+                <!--Слот 3-->
+                <div class="slot-block double-slot disabled-block block-child" id="slot3"
+                    onclick="changeSlotColor(this)">
+                    <div class="slot-params">
+                        <button class="params-btn" slot-id="slot3"><img src="img/settings.png" /></button>
+                    </div>
+                    <div class="slot-name-h">Слот 3</div>
+                </div>
+            </div>
+
+            <!--FAN_2-->
+            <div class="slot-block one-slot disabled-block block-child" id="fan2" onclick="changeSlotColor(this)">
+                <div class="slot-params">
+                    <button class="params-btn" slot-id="fan2"><img src="img/settings.png" /></button>
+                </div>
+                <div class="slot-name">FAN_2</div>
+            </div>
+
+            <!--Слот 5 и Слот 6-->
+            <div class="slot-block double-slot">
+                <!--Слот 6-->
+                <div class="slot-block double-slot disabled-block block-child" id="slot6"
+                    onclick="changeSlotColor(this)">
+                    <div class="slot-params">
+                        <button class="params-btn" slot-id="slot6"><img src="img/settings.png" /></button>
+                    </div>
+                    <div class="slot-name-h">Слот 6</div>
+                </div>
+                <!--Слот 5-->
+                <div class="slot-block double-slot disabled-block block-child" id="slot5"
+                    onclick="changeSlotColor(this)">
+                    <div class="slot-params">
+                        <button class="params-btn" slot-id="slot5"><img src="img/settings.png" /></button>
+                    </div>
+                    <div class="slot-name-h">Слот 5</div>
+                </div>
+            </div>
+
+            <!--PWR-->
+            <div class="slot-block one-slot disabled-block block-child" id="pwr" onclick="changeSlotColor(this)">
+                <div class="slot-params">
+                    <button class="params-btn" slot-id="pwr"><img src="img/settings.png" /></button>
+                </div>
+                <div class="slot-name">PWR</div>
+            </div>
 
         </div>
     </main>

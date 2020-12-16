@@ -1,11 +1,20 @@
 $main-bg-color: #e5ffd1;
 $block-bg-color: #95bb79;
 
+$active-bg-color: #95bb79;
+$active-border-color: #086400;
+
+$disabled-bg-color: #d3d3d3;
+$disabled-border-color: #474747;
+
+$error-bg-color: #ff5959;
+$error-border-color: #7c0000;
+
 $slot-numb-height: 50px;
-$lamp-height: 50px;
 $slot-name-height: 100px;
 $slot-params-height: 50px;
 $slot-gap: 20px;
+$slot-width: 70px;
 
 body {
   background-color: $main-bg-color;
@@ -33,17 +42,18 @@ main {
   margin-top: 50px;
 }
 
-.lamp {
-  height: $lamp-height;
-  width: $lamp-height;
+.error-block {
+  background-color: $error-bg-color;
+  border: 2px solid $error-border-color;
+}
+.active-block {
+  background-color: $active-bg-color;
+  border: 2px solid $active-border-color;
+}
 
-  border-radius: 100%;
-}
-.red-lamp {
-  background-color: red;
-}
-.green-lamp {
-  background-color: green;
+.disabled-block {
+  background-color: $disabled-bg-color;
+  border: 2px solid $disabled-border-color;
 }
 
 #board-block {
@@ -51,7 +61,6 @@ main {
   flex-direction: row;
   justify-content: space-between;
 
-  background-color: $block-bg-color;
   height: 70px;
 }
 .board-child {
@@ -69,9 +78,10 @@ main {
   justify-content: space-between;
 
   height: calc(
-    #{$slot-numb-height} + #{$lamp-height} + #{$slot-name-height} + #{$slot-params-height} +
-      #{$slot-gap} * 3
+    (#{$slot-name-height} + #{$slot-params-height} + #{$slot-gap}) * 2
   );
+
+  margin-top: 5px;
 }
 
 .slot-block {
@@ -79,10 +89,17 @@ main {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-
-  width: 70px;
-  background-color: $block-bg-color;
 }
+.one-slot {
+  width: $slot-width;
+}
+.double-slot {
+  width: calc(#{$slot-width} * 2.5);
+  height: calc(
+    (#{$slot-name-height} + #{$slot-params-height} + #{$slot-gap}) * 2
+  );
+}
+
 .slot-numb {
   display: flex;
   justify-content: center;
@@ -99,8 +116,20 @@ main {
   writing-mode: vertical-lr;
   text-orientation: mixed;
 }
+.slot-name-h {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: $slot-name-height;
+}
 
 .slot-params {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   height: $slot-params-height;
 }
 
