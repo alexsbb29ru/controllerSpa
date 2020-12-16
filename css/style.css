@@ -137,10 +137,6 @@ main {
 
 .slot-name {
   height: 100px;
-  -webkit-writing-mode: vertical-lr;
-      -ms-writing-mode: tb-lr;
-          writing-mode: vertical-lr;
-  text-orientation: mixed;
 }
 
 .slot-name-h {
