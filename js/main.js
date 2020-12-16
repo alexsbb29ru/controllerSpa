@@ -75,10 +75,12 @@ function changeSlotColor(slot) {
 function disableSlots() {
     let slots = document.querySelectorAll(".block-child")
 
-    slots.forEach((slot) => {
+    for (let i = 0; i < slots.length; i++) {
+        let slot = slots[i]
+
         removeSlotClasses(slot)
         slot.classList.add(slotCommandsColorTable.disabled)
-    })
+    }
 }
 
 function removeSlotClasses(slot) {
