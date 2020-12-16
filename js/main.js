@@ -57,6 +57,16 @@ function changeSlotColor(slot) {
     //Добавляем полученный по команде CSS-класс
     slot.classList.add(bgCssClass)
 
+    //Цвет блока со слотами является визуальной площадкой платы
+    //поэтому его окрашиваем в цвет кросс-платы
+    if (slot.id === crossBoardId) {
+        let mainSlotsBlock = document.getElementById("main-slots-block")
+
+        removeSlotClasses(mainSlotsBlock)
+        mainSlotsBlock.classList.add(bgCssClass)
+    }
+
+
     if (slot.id === crossBoardId && bgCssClass !== slotCommandsColorTable.active) {
         disableSlots()
     }

@@ -62,6 +62,7 @@ main {
   justify-content: space-between;
 
   height: 70px;
+  border-bottom: none;
 }
 .board-child {
   display: flex;
@@ -81,7 +82,8 @@ main {
     (#{$slot-name-height} + #{$slot-params-height} + #{$slot-gap}) * 2
   );
 
-  margin-top: 5px;
+  padding: 10px;
+  border-top: none;
 }
 
 .slot-block {
