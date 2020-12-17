@@ -1,5 +1,6 @@
 body {
   background-color: #e5ffd1;
+  font-size: x-large;
 }
 
 header {
@@ -90,7 +91,7 @@ main {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  height: calc( (100px + 50px + 20px) * 2);
+  height: calc( (100px + 50px + 20px) * 3);
   padding: 10px;
   border-top: none;
 }
@@ -112,12 +113,34 @@ main {
 }
 
 .one-slot {
-  width: 70px;
+  width: 11%;
+  padding: 10px;
 }
 
 .double-slot {
-  width: calc(70px * 2.5);
-  height: calc( (100px + 50px + 20px) * 2);
+  width: calc(11% * 2.5);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.double-slot-child {
+  height: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 10px;
 }
 
 .slot-numb {
@@ -137,6 +160,15 @@ main {
 
 .slot-name {
   height: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .slot-name-h {
