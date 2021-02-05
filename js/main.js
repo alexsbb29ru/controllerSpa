@@ -1,37 +1,37 @@
-let slotColorTable
-let slotCommandsColorTable
-let crossBoardId
+let slotColorTable;
+let slotCommandsColorTable;
+let crossBoardId;
 /**
  * Инициализация всех данных
  */
 function init() {
-    setTextData()
+    setTextData();
     slotCommandsColorTable = {
         disabled: "disabled-block",
         active: "active-block",
         error: "error-block"
-    }
+    };
     slotColorTable = {
         0: slotCommandsColorTable.disabled,
         1: slotCommandsColorTable.active,
         2: slotCommandsColorTable.error
-    }
-    crossBoardId = "board-block"
+    };
+    crossBoardId = "board-block";
 }
 /**
  * Инициализация текстовых данных в блоках
  */
 function setTextData() {
     //Устанавливаем текстовые значения в блоки
-    let vectorBlock = document.getElementById("vector-block")
-    let centralBlock = document.getElementById("central-block")
-    let cpiBlock = document.getElementById("cpi-block")
-    let boardText = document.getElementById("board-text")
+    let vectorBlock = document.getElementById("vector-block");
+    let centralBlock = document.getElementById("central-block");
+    let cpiBlock = document.getElementById("cpi-block");
+    let boardText = document.getElementById("board-text");
 
-    vectorBlock.innerText = "Вектор"
-    centralBlock.innerText = "Название блока"
-    cpiBlock.innerText = "ЦПИ"
-    boardText.innerText = "Кросс-плата"
+    vectorBlock.innerText = "Вектор";
+    centralBlock.innerText = "Название блока";
+    cpiBlock.innerText = "ЦПИ";
+    boardText.innerText = "Кросс-плата";
 }
 /**
  * Изменение цвета лампочки
@@ -39,55 +39,55 @@ function setTextData() {
  */
 function changeSlotColor(slot) {
     //Выведем всплывашку с вопросом о значении
-    let command = prompt("Введите 0 - отключен, 1 - активен или 2 - ошибка", 0)
+    let command = prompt("Введите 0 - отключен, 1 - активен или 2 - ошибка", 0);
     //Если не целое число, остановим код
     if (!parseInt(command))
         if (command != 0)
-            return false
+            return false;
 
     //Если команды нет в таблице, остановим выполнение
     if (!slotColorTable[command])
-        return
+        return;
 
     //Получаем CSS-класс по коду, который ввели
-    let bgCssClass = slotColorTable[command]
+    let bgCssClass = slotColorTable[command];
 
     //Удаляем все CSS-классы из таблицы, чтобы не привязываться к куче условий
-    removeSlotClasses(slot)
+    removeSlotClasses(slot);
     //Добавляем полученный по команде CSS-класс
-    slot.classList.add(bgCssClass)
+    slot.classList.add(bgCssClass);
 
     //Цвет блока со слотами является визуальной площадкой платы
     //поэтому его окрашиваем в цвет кросс-платы
     if (slot.id === crossBoardId) {
-        let mainSlotsBlock = document.getElementById("main-slots-block")
+        let mainSlotsBlock = document.getElementById("main-slots-block");
 
-        removeSlotClasses(mainSlotsBlock)
-        mainSlotsBlock.classList.add(bgCssClass)
+        removeSlotClasses(mainSlotsBlock);
+        mainSlotsBlock.classList.add(bgCssClass);
     }
 
 
     if (slot.id === crossBoardId && bgCssClass !== slotCommandsColorTable.active) {
-        disableSlots()
+        disableSlots();
     }
 }
 
 function disableSlots() {
-    let slots = document.querySelectorAll(".block-child")
+    let slots = document.querySelectorAll(".block-child");
 
     for (let i = 0; i < slots.length; i++) {
-        let slot = slots[i]
+        let slot = slots[i];
 
-        removeSlotClasses(slot)
-        slot.classList.add(slotCommandsColorTable.disabled)
+        removeSlotClasses(slot);
+        slot.classList.add(slotCommandsColorTable.disabled);
     }
 }
 
 function removeSlotClasses(slot) {
     for (let i in slotColorTable) {
         if (slot.classList.contains(slotColorTable[i]))
-            slot.classList.remove(slotColorTable[i])
+            slot.classList.remove(slotColorTable[i]);
     }
 }
 
-init()
+init();
